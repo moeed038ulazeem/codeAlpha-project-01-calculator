@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="calculator">
+    <div class="result" id="result">0</div>
+    <input type="button" class="clear" value="C" onclick="clearResult()">
+    <input type="button" value="/" onclick="appendOperator('/')">
+    <input type="button"  value="*" onclick="appendOperator('*')">
+    <input type="button" value="7" onclick="appendNumber('7')">
+    <input type="button" value="8" onclick="appendNumber('8')">
+    <input type="button" value="9" onclick="appendNumber('9')">
+    <input type="button"  value="-" onclick="appendOperator('-')">
+    <input type="button" value="4" onclick="appendNumber('4')">
+    <input type="button" value="5" onclick="appendNumber('5')">
+    <input type="button" value="6" onclick="appendNumber('6')">
+    <input type="button" class="operator" value="+" onclick="appendOperator('+')">
+    <input type="button" class="first-row" value="1" onclick="appendNumber('1')">
+    <input type="button" class="first-row" value="2" onclick="appendNumber('2')">
+    <input type="button" class="first-row" value="3" onclick="appendNumber('3')"><br>
+    
+    <input type="button" class="last-row" value="0" onclick="appendNumber('0')">
+    <input type="button"  class="last-row" value="00" onclick="appendNumber('00')">
+    <input type="button"  class="last-row" value="." onclick="appendOperator('.')">
+    <input type="button"  class="last-row equals"  value="=" onclick="calculate()">
+</div>
+
+<script>
+    function appendNumber(number) {
+        document.getElementById('result').innerText += number;
+    }
+
+    function appendOperator(operator) {
+        document.getElementById('result').innerText += operator;
+    }
+
+    function clearResult() {
+        document.getElementById('result').innerText = '';
+    }
+
+    function calculate() {
+        try {
+            let result = eval(document.getElementById('result').innerText);
+            document.getElementById('result').innerText = result;
+        } catch (error) {
+            document.getElementById('result').innerText = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
